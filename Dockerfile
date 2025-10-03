@@ -5,6 +5,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime (lighter)
+
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=builder /app/target/*.jar com.smarttask-0.0.1-SNAPSHOT.jar
